@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.vscode
 # C extensions
 *.so
 
@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+env/
+pbeurre/__pycache__
+aliments/__pycache__/
+aliments/migrations/__pycache__/
+pbeurre/settings/production.py
+__pycache__
+pbeurre/staticfiles/

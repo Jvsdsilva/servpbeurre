@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Aliments/css/creative.min.css' %}" />
+
+    <!-- Font Awesome Icons -->
+    <link href="{% static 'Aliments/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link rel="icon" href="{% static 'Aliments/img/logo_pur_beurre-favicon.png' %}" type="image/x-icon">
+    <!--<link rel="shortcut icon" href="{% static 'Aliments/img/logo_pur_beurre-favicon.png' type='image/x-icon' %}">-->
+    <link href="{% static 'Aliments/css/main.css' %}" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'index'%}%"> <img class="img-responsive" src="../../static/Aliments/img/logo_pur_beurre.png" alt="" style="width:30px;height:30px;margin-right:10px;" >Pur Beurre 
+        </a>
+          {% if user.is_authenticated %}
+            Welcome {{ user.username }} !
+          {% else %}
+            Welcome Visitor!
+          {% endif %}
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <li class="nav-item">      
+              <form action = "{% url 'results'%}" method = "POST" id='searchnav'>
+                {% csrf_token %}
+                <div class="input-group input-group-sm mb-3">
+                  <input type="text" name="query_nav" form="searchform" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                </div>
+              </form>
+            </li>
+            {% if user.is_authenticated %}  
+              <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger"><i class="fas fa-user-lock fa-2x"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'aliment'%}"><i class="fas fa-carrot fa-2x"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{% url 'logout'%}"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="{% url 'login'%}"> <i class="fas fa-user fa-2x"></i></a>
+              </li>
+              {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="block_content">
+    {% block content %}
+    {% endblock %}
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer fixed-bottom py-3 mentions">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mx-auto text-center">
+              <nav class="nav nav-pills nav-fill">
+                <a class="nav-link col-lg-6" href="{% url 'mentions'%}">Mentions légales</a>
+                <a class="nav-link col-lg-6" href="{% url 'contact' %} #contact">Contact</a>
+              </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'Aliments/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Aliments/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'Aliments/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'Aliments/js/creative.min.js' %}"></script>
+  </body>
+</html>

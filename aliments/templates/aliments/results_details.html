@@ -1,0 +1,44 @@
+{% extends 'aliments/base.html' %}
+
+{% block content %}
+<!-- Masthead -->
+<header class="headother" id="header">
+    <div class="flex-container h-100 user">
+        <div class="row headtext">
+        <div class="col-lg-10 align-self-end">
+            <h1 class=" text-white font-weight-bold"> {{nameAlim}}</h1>
+            <hr class="divider my-4">
+        </div>
+        </div>
+    </div>
+</header>
+<!-- Images Section -->
+<section id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters" id="gutters">
+            <div class="col-lg-4 col-sm-6" id="results_container">
+                <form class="form-inline " action ="{% url 'aliment'%}" method ="POST" id ="foodsaveform">
+                    {% csrf_token %}
+                    <div class="portfolio-box-caption" id="img_foodsave">
+                    <img class="img-responsive" src= "{{image}} " alt="image">
+                    <input class = "invisible" name="id" value={{id}} form="foodsaveform">
+                    </div>
+                    <div class="portfolio-box-caption" id="box_foodsave">
+                        <div class="project-category text-white-50">
+                            <p> Score : {{nutritionGrade}}</p>
+                        </div>
+                        <div class="project-category text-white-50">
+                            <p> Ingredients: {{descriptionAlim}}</p>
+                        </div>
+                        {% if user.is_authenticated %}
+                        <div class="input-group-append" id="btn_foodsave">
+                            <button class="btn btn-sm" type="submit" id="foodsave" name="foodsavebtn" value="foodsavebtn" href="{% url 'aliment'%}" form="foodsaveform">Save</button>
+                        </div>
+                        {% endif %}
+                    </div> 
+                </form>    
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

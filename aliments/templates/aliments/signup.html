@@ -1,0 +1,26 @@
+{% extends 'aliments/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- Masthead -->
+<header class="headother" id="header">
+  <div class="flex-container h-100 user">
+    <div class="row headtext">
+      <div class="col-lg-10 align-self-end">
+        <h1 class=" text-white font-weight-bold">Créee votre compte!</h1>
+        <hr class="divider my-4">
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Horizontal material form -->
+<div class="flex-container">
+  <form name = "form_user" class = "signin" action="aliments/signup" method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <a class="nav-link js-scroll-trigger">
+      <button type="submit" class="btn btn-primary">Valider</button>
+    </a>
+  </form>
+</div>
+
+{% endblock %}
