@@ -20,15 +20,6 @@ import logging
 
 # go to home
 def index(request):
-
-    # Get an instance of a logger
-    logger = logging.getLogger(__name__)
-
-    logger.info('Index', exc_info=True, extra={
-        # Optionally pass a request and we'll grab any information we can
-        'request': request,
-    })
-
     dbInsert.category_presence
     dbInsert.store_presence
     dbInsert.product_presence
