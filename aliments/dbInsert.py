@@ -169,3 +169,31 @@ def get_saved_products(idUser):
             result_res = list()
 
     return(result_res)
+
+
+def category_presence():
+
+    cat = Category.objects.all()
+
+    if cat.exists():
+        exist = "Yes"
+    else:
+        insertCategory()
+
+
+def store_presence():
+
+    store = Store.objects.all()
+    if store.exists():
+        exist = "Yes"
+    else:
+        insertStore()
+
+
+def product_presence():
+
+    products = Products.objects.all()
+    if products.exists():
+        exist = "Yes"
+    else:
+        insertProducts()
