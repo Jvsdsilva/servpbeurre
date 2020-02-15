@@ -19,7 +19,6 @@ from .models import Products
 
 # go to home
 def index(request):
-
     dbInsert.category_presence
     dbInsert.store_presence
     dbInsert.product_presence

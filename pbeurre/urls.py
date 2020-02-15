@@ -27,6 +27,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from aliments import views
 
+
 urlpatterns = [
     url(r'^$', views.index,),
     url(r'^aliments/', include('aliments.urls')),
