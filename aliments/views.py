@@ -15,21 +15,24 @@ from django.db import transaction
 from .models import Category
 from .models import Store
 from .models import Products
-import sys
+import logging
 
 
 # go to home
 def index(request):
 
-    try:
-        dbInsert.category_presence
-        dbInsert.store_presence
-        dbInsert.product_presence
-    except:
-        print("Oops!",sys.exc_info()[0],"occured.")
-        print("Next entry.")
-        print()
-    
+    # Get an instance of a logger
+    logger = logging.getLogger(__name__)
+
+    logger.info('Index', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
+
+    dbInsert.category_presence
+    dbInsert.store_presence
+    dbInsert.product_presence
+ 
     template = loader.get_template('aliments/index.html')
     return HttpResponse(template.render(request=request))
 
