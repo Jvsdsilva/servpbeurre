@@ -22,18 +22,18 @@ def index(request):
 
     cat = Category.objects.all()
     if cat.exists():
-        print("exist")
+        # print("exist")
     else:
         dbInsert.insertCategory()
 
         store = Store.objects.all()
         if store.exists():
-            print("exist")
+            # print("exist")
         else:
             dbInsert.insertStore()
             products = Products.objects.all()
             if products.exists():
-                print("exist")
+                # print("exist")
             else:
                 dbInsert.insertProducts()
     template = loader.get_template('aliments/index.html')
