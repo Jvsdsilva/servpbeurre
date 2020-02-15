@@ -15,6 +15,11 @@ from django.db import transaction
 from .models import Category
 from .models import Store
 from .models import Products
+import logging
+
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 # go to home
@@ -62,6 +67,12 @@ def signup(request):
 
 # request results
 def results(request):
+
+    logger.info('results', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
+
     result_res = []
     query_index = ""
     query = ""
