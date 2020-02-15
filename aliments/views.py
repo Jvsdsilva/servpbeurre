@@ -15,14 +15,21 @@ from django.db import transaction
 from .models import Category
 from .models import Store
 from .models import Products
+import sys
 
 
 # go to home
 def index(request):
-    dbInsert.category_presence
-    dbInsert.store_presence
-    dbInsert.product_presence
 
+    try:
+        dbInsert.category_presence
+        dbInsert.store_presence
+        dbInsert.product_presence
+    except:
+        print("Oops!",sys.exc_info()[0],"occured.")
+        print("Next entry.")
+        print()
+    
     template = loader.get_template('aliments/index.html')
     return HttpResponse(template.render(request=request))
 
