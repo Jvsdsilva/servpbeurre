@@ -19,21 +19,22 @@ from .models import Products
 
 # go to home
 def index(request):
-
+    exist = False
     cat = Category.objects.all()
+
     if cat.exists():
-        # print("exist")
+        exist = True
     else:
         dbInsert.insertCategory()
 
         store = Store.objects.all()
         if store.exists():
-            # print("exist")
+            exist = True
         else:
             dbInsert.insertStore()
             products = Products.objects.all()
             if products.exists():
-                # print("exist")
+                exist = True
             else:
                 dbInsert.insertProducts()
     template = loader.get_template('aliments/index.html')
