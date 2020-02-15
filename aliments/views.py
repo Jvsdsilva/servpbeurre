@@ -77,36 +77,36 @@ def results(request):
             else:
                 query_nav = ""
     
-    if search == 'searchbtn' or query_nav != "":
-        if search == 'searchbtn':
-            query_index = request.POST['query_index']
+        if search == 'searchbtn' or query_nav != "":
+            if search == 'searchbtn':
+                query_index = request.POST['query_index']
 
-        if query_index != "" or query_nav != "":
-            if query_index != "":
-                query = query_index
+            if query_index != "" or query_nav != "":
+                if query_index != "":
+                    query = query_index
 
-            if query_nav != "":
-                query = query_nav
+                if query_nav != "":
+                    query = query_nav
 
-            results = dbInsert.get_Results(query)
-        else:
-            text = "Veiullez saisir un produit"
-            return render(request, 'aliments/index.html', {'text': text})
+                results = dbInsert.get_Results(query)
+            else:
+                text = "Veiullez saisir un produit"
+                return render(request, 'aliments/index.html', {'text': text})
 
-        if len(results) == 0:
-            text = "Nous n'avons pas ce produit, veiullez reessayer!"
-            return render(request, 'aliments/results.html', {'text': text})
-        else:
-            for result in results:
-                contexts = {}
-                contexts['id'] = result.id
-                contexts['nameAlim'] = result.nameAlim
-                contexts['image'] = result.image
-                contexts['nutritionGrade'] = result.nutritionGrade
+            if len(results) == 0:
+                text = "Nous n'avons pas ce produit, veiullez reessayer!"
+                return render(request, 'aliments/results.html', {'text': text})
+            else:
+                for result in results:
+                    contexts = {}
+                    contexts['id'] = result.id
+                    contexts['nameAlim'] = result.nameAlim
+                    contexts['image'] = result.image
+                    contexts['nutritionGrade'] = result.nutritionGrade
 
-                result_res.append(contexts)
+                    result_res.append(contexts)
 
-            return render(request, 'aliments/results.html',
+                return render(request, 'aliments/results.html',
                          {'results': result_res})
 
 
