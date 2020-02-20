@@ -24,6 +24,12 @@ logger = logging.getLogger(__name__)
 
 # go to home
 def index(request):
+    dbInsert = dbInsert.dbInsert()
+    
+    dbInsert.insertCategory
+    dbInsert.insertStore
+    dbInsert.insertProducts
+    
     dbInsert.category_presence
     dbInsert.store_presence
     dbInsert.product_presence

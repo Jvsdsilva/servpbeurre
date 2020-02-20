@@ -197,3 +197,4 @@ def product_presence():
         exist = "Yes"
     else:
         insertProducts()
+
