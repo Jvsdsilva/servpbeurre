@@ -24,15 +24,22 @@ logger = logging.getLogger(__name__)
 
 # go to home
 def index(request):
-    dbInsert = dbInsert.dbInsert()
-    
-    dbInsert.insertCategory
-    dbInsert.insertStore
-    dbInsert.insertProducts
+    cat = Category.objects.all()
+    if cat.exists():
+        print("exist")
+    else:
+        dbInsert.insertCategory()
 
-    dbInsert.category_presence
-    dbInsert.store_presence
-    dbInsert.product_presence
+        store = Store.objects.all()
+        if store.exists():
+            print("exist")
+        else:
+            dbInsert.insertStore()
+            products = Products.objects.all()
+            if products.exists():
+                print("exist")
+            else:
+                dbInsert.insertProducts()
  
     template = loader.get_template('aliments/index.html')
     return HttpResponse(template.render(request=request))
