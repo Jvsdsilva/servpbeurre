@@ -25,6 +25,11 @@ logger = logging.getLogger(__name__)
 
 # go to home
 def index(request):
+    logger.info('index', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
+
     cat = Category.objects.all()
     if cat.exists():
         print("exist")
@@ -146,6 +151,11 @@ def results(request):
 
 # redirect to page details for a specific product
 def results_details(request, pk):
+    logger.info('results_details', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
+
     obj_aliment = Products.objects.get(pk=pk)
 
     context = {
@@ -161,6 +171,10 @@ def results_details(request, pk):
 
 # page of products
 def aliment(request):
+    logger.info('foodsave', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
 
     foodsave = request.POST.get('foodsavebtn', None)
 
