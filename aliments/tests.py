@@ -165,7 +165,7 @@ class TestViews(TestCase):
         response = self.client.get(self.login)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'aliments/user.html')
+        self.assertTemplateUsed(response, 'aliments/login.html')
 
     def test_mentions_GET(self):
         response = self.client.get(self.mentions)
