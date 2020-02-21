@@ -54,11 +54,8 @@ def login(request):
 
 # redirect to user connected page
 def connected(request):
-
-    return HttpResponseRedirect(reverse('connected', args=[]))
-
-    """template = loader.get_template('aliments/aliments.html')
-    return HttpResponse(template.render(request=request))"""
+    template = loader.get_template('aliments/aliments.html')
+    return HttpResponse(template.render(request=request))
 
 
 # logout user
