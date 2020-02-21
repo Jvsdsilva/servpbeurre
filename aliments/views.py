@@ -47,7 +47,7 @@ def index(request):
 
 # loged in
 def login(request):
-    template = loader.get_template('aliments/user.html')
+    template = loader.get_template('aliments/login.html')
     return HttpResponse(template.render(request=request))
 
 
