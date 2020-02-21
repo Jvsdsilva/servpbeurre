@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^index', views.index, name="index"),
-    url(r'^login/$', LoginView.as_view(template_name='aliments/login.html'), name='login'),
+    url(r'^login/$', LoginView.as_view(template_name='aliments/login.html'), {'redirect_authenticated_user': True}, name='login'),
     url(r'^results/$', views.results, name="results"),
     url(r'^results_details/(?P<pk>\d+)/$', views.results_details, name="results_details"),
     url(r'^aliment/', views.aliment, name="aliment"),
