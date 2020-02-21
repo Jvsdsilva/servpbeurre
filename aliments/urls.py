@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^contact/', views.index, name="contact"),
     url(r'^signup/', views.signup, name="signup"),
     url(r'^connected/', views.connected, name="connected"),
-    url(r'^connected/', LoginView.as_view(template_name='aliments/aliments.html'), name="connected"),
+    url(r'^accounts/profile', views.connected, name="connected"),
 ]
