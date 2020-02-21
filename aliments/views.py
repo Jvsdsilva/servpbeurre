@@ -48,12 +48,20 @@ def index(request):
 
 # loged in
 def login(request):
+    logger.info('login', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
     template = loader.get_template('aliments/login.html')
     return HttpResponse(template.render(request=request))
 
 
 # redirect to user connected page
 def connected(request):
+    logger.info('connected', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
     template = loader.get_template('aliments/aliments.html')
     return HttpResponse(template.render(request=request))
 
