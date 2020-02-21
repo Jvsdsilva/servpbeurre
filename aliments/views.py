@@ -30,6 +30,14 @@ def index(request):
         'request': request,
     })
 
+    try:
+        cat = Category.objects.all()
+        logger.info("Table category")
+
+    except Exception as e:
+        logging.exception(
+            "We get some problems with category database: ", e) 
+    
     cat = Category.objects.all()
     if cat.exists():
         print("exist")
