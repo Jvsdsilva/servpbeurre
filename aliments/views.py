@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from .forms import RegistrationForm
 from django import forms
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from aliments.models import Products
 from aliments.models import Foodsave
@@ -16,6 +16,7 @@ from aliments.models import Category
 from aliments.models import Store
 from aliments.models import Products
 import logging
+from django.urls import reverse
 
 
 # Get an instance of a logger
@@ -53,8 +54,11 @@ def login(request):
 
 # redirect to user connected page
 def connected(request):
-    template = loader.get_template('aliments/aliments.html')
-    return HttpResponse(template.render(request=request))
+
+    return HttpResponseRedirect(reverse('connected', args=[]))
+
+    """template = loader.get_template('aliments/aliments.html')
+    return HttpResponse(template.render(request=request))"""
 
 
 # logout user
