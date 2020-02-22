@@ -10,6 +10,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+
 # insert list category into database
 def insertCategory():
     category_list = {}
