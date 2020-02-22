@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^aliments/', include('aliments.urls')),
     url(r'^content/', admin.site.urls),
     url(r'^aliments/', include('django.contrib.auth.urls')),
-    url(r'^accounts/profile/', include('aliments.urls')),
+    url(r'^account/', include('accounts.urls')),
 ]
 
 if settings.DEBUG:
