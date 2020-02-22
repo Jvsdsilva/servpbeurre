@@ -15,11 +15,16 @@ logger = logging.getLogger(__name__)
 def insertCategory():
     category_list = {}
     cat_list = []
-    request = dbRequests.DbRequests()
-    logger.info('insert categ', exc_info=True, extra={
-        # Optionally pass a request and we'll grab any information we can
-        'request': request,
-    })
+
+    try:
+        request = dbRequests.DbRequests()
+        logger.info('request category', exc_info=True, extra={
+            # Optionally pass a request and we'll grab any information we can
+            'request': request,
+        })
+    except Exception:
+        logging.exception(
+            "We get some problems with request category API: ")
 
     category_list = request.Request_categories()
 
@@ -39,7 +44,15 @@ def insertStore():
     store_list = {}
     sto_list = []
 
-    request = dbRequests.DbRequests()
+    try:
+        request = dbRequests.DbRequests()
+        logger.info('request store', exc_info=True, extra={
+            # Optionally pass a request and we'll grab any information we can
+            'request': request,
+        })
+    except Exception:
+        logging.exception(
+            "We get some problems with request store API: ")
 
     store_list = request.Request_stores()
 
@@ -58,7 +71,15 @@ def insertStore():
 def insertProducts():
     list_prod_obj = []
 
-    request = dbRequests.DbRequests()
+    try:
+        request = dbRequests.DbRequests()
+        logger.info('request products', exc_info=True, extra={
+            # Optionally pass a request and we'll grab any information we can
+            'request': request,
+        })
+    except Exception:
+        logging.exception(
+            "We get some problems with request products API: ")
 
     product_list = request.Request_products()
 
@@ -135,7 +156,7 @@ def get_Results(product):
         obj_prods_by_cat = get_products_by_cat(ob_Product.first().idCategory)
     else:
         obj_prods_by_cat = list()
-    
+
     return(obj_prods_by_cat)
 
 
@@ -181,34 +202,7 @@ def get_saved_products(idUser):
     return(result_res)
 
 
-def category_presence():
-
-    cat = Category.objects.all()
-
-    if cat.exists():
-        exist = "Yes"
-    else:
-        insertCategory()
-
-
-def store_presence():
-
-    store = Store.objects.all()
-    if store.exists():
-        exist = "Yes"
-    else:
-        insertStore()
-
-
-def product_presence():
-
-    products = Products.objects.all()
-    if products.exists():
-        exist = "Yes"
-    else:
-        insertProducts()
-
-
+# Insert data into database
 if __name__ == "__main__":
     insertCategory()
     insertStore()

@@ -84,16 +84,15 @@ WSGI_APPLICATION = 'pbeurre.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
-        'NAME': 'pbeurre', # le nom de notre base de données créée précédemment
-        'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur !!
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pbeurre',
+        'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': '',
         'PORT': '5432',
         'ATOMIC_REQUESTS': True,
     }
 }
-
 
 
 # Password validation
