@@ -4,7 +4,11 @@ from aliments.models import Category
 from aliments.models import Store
 from aliments.models import Products
 from aliments.models import Foodsave
+import logging
 
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 # insert list category into database
 def insertCategory():
