@@ -1,3 +1,4 @@
+from django.db import models
 from aliments import dbRequests
 from aliments.models import Category
 from aliments.models import Store
@@ -10,6 +11,10 @@ def insertCategory():
     category_list = {}
     cat_list = []
     request = dbRequests.DbRequests()
+    logger.info('insert categ', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
 
     category_list = request.Request_categories()
 
@@ -198,3 +203,8 @@ def product_presence():
     else:
         insertProducts()
 
+
+if __name__ == "__main__":
+    insertCategory()
+    insertStore()
+    insertProducts()
