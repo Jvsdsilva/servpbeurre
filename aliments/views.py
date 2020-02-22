@@ -33,27 +33,25 @@ def index(request):
     try:
         cat = Category.objects.all()
         logger.info("Table category")
+        
+        if cat.exists():
+            print("exist")
+        else:
+            dbInsert.insertCategory()
 
+            store = Store.objects.all()
+            if store.exists():
+                print("exist")
+            else:
+                dbInsert.insertStore()
+                products = Products.objects.all()
+                if products.exists():
+                    print("exist")
+                else:
+                    dbInsert.insertProducts()
     except Exception as e:
         logging.exception(
             "We get some problems with category database: ", e) 
-    
-    cat = Category.objects.all()
-    if cat.exists():
-        print("exist")
-    else:
-        dbInsert.insertCategory()
-        
-        store = Store.objects.all()
-        if store.exists():
-            print("exist")
-        else:
-            dbInsert.insertStore()
-            products = Products.objects.all()
-            if products.exists():
-                print("exist")
-            else:
-                dbInsert.insertProducts()
 
     template = loader.get_template('aliments/index.html')
     return HttpResponse(template.render(request=request))
