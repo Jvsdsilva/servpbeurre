@@ -18,20 +18,17 @@ class Command(BaseCommand):
 
         if cat.exists():
             logger.info("Category table not empty")
-            print("exist")
         else:
             dbInsert.insertCategory()
 
             store = Store.objects.all()
             if store.exists():
                 logger.info("Store table not empty")
-                print("exist")
             else:
                 dbInsert.insertStore()
                 products = Products.objects.all()
                 if products.exists():
                     logger.info("Products table not empty")
-                    print("exist")
                 else:
                     dbInsert.insertProducts()
 

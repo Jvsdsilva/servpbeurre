@@ -35,21 +35,18 @@ def index(request):
 
         if cat.exists():
             logger.info("Table category not empty")
-            print("exist")
         else:
             dbInsert.insertCategory()
 
             store = Store.objects.all()
             if store.exists():
                 logger.info("Table store not empty")
-                print("exist")
             else:
                 dbInsert.insertStore()
 
                 products = Products.objects.all()
                 if products.exists():
                     logger.info("Table products not empty")
-                    print("exist")
                 else:
                     dbInsert.insertProducts()
         logger.info("Data insert into db")
