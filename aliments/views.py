@@ -115,6 +115,8 @@ def results(request):
 
     if request.method == "POST":
         search = request.POST.get('searchbtn')
+        searchnav = request.POST.get('searchnav')
+
         if search is None:
             query_nav = request.POST['query_nav']
 
@@ -126,6 +128,7 @@ def results(request):
     if search == 'searchbtn' or query_nav != "":
         if search == 'searchbtn':
             query_index = request.POST['query_index']
+            query_nav = request.POST['query_nav']
 
         if query_index != "" or query_nav != "":
             if query_index != "":
